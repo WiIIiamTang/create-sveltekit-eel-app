@@ -1,6 +1,6 @@
 {
-	"name": "sveltekiteel",
-	"version": "0.0.1",
+	"name": "create-sveltekit-eel-app",
+	"version": "0.1.0",
 	"bin": "./bin/cli.js",
 	"scripts": {
 		"dev": "vite dev",
