@@ -11,7 +11,10 @@
 		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
 		"test:unit": "vitest",
 		"lint": "prettier --plugin-search-dir . --check . && eslint .",
-		"format": "prettier --plugin-search-dir . --write ."
+		"format": "prettier --plugin-search-dir . --write .",
+		"start:eel": "npm run build && python eelApp.py --console",
+		"build:eel-generate-spec": "npm run build && python -m eel eelApp.py build -y",
+		"build:eel": "npm run build && pyinstaller eelApp.spec -y"
 	},
 	"devDependencies": {
 		"@playwright/test": "^1.28.1",

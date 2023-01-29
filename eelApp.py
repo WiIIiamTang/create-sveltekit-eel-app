@@ -1,29 +1,66 @@
-import eel
-import tkinter
-from tkinter import filedialog as fd
+import argparse
+import logging
+import sys
+import platform
+import io
 
 
-eel.init("build", [".tsx", ".ts", ".jsx", ".js", ".html", ".svelte"])
+def parse_args() -> argparse.Namespace:
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--width", type=int, default=800)
+    parser.add_argument("--height", type=int, default=600)
+    parser.add_argument("--dev", action="store_true", default=False)
+    parser.add_argument("--console", action="store_true", default=False)
+    return parser.parse_args()
 
 
-@eel.expose
-def hello_from_eel(name: str):
-    print(f"Hello {name}, you are calling a function from Python")
-    eel.hello_from_sk(name)
+def main(args: argparse.Namespace):
+    if not args.console:
+        # Fix for when packaging app with --noconsole
+        # https://github.com/python-eel/Eel/issues/654
+        sys.stdout = io.StringIO()
+        sys.stderr = io.StringIO()
 
+    # WARN: Any imports that use eel must be after the above fix
+    import eel
+    from py.models import EelExposer
 
-@eel.expose
-def choose_file() -> str:
-    tkinter.Tk().withdraw()
-    root = tkinter.Tk()
-    root.attributes("-alpha", 0.0)
-    root.attributes("-topmost", True)
-    filename = fd.askopenfilename(
-        parent=root, title="Choose a file", filetypes=[("All files", "*.*")]
+    logging.basicConfig(
+        level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s"
     )
-    root.destroy()
-    return filename
+
+    eel.init(
+        "build" if not args.dev else "src",
+        [".tsx", ".ts", ".jsx", ".js", ".html", ".svelte"],
+    )
+    EelExposer().expose_fns()
+
+    logging.info("Eel ws running on ws://localhost:8888")
+
+    try:
+        eel.start(
+            "" if not args.dev else {"port": 5173},
+            size=(args.width, args.height),
+            port=8888,  # this should not be changed
+            mode="chrome",
+        )
+    except EnvironmentError:
+        if sys.platform in ["win32", "win64"]:
+            try:
+                platform_release = int(platform.release())
+            except ValueError:
+                raise EnvironmentError("Eel failed to start.")
+            if platform_release >= 10:
+                logging.error("Eel failed to start with Chrome, defaulting to Edge")
+                eel.start(
+                    "" if not args.dev else {"port": 5173},
+                    size=(args.width, args.height),
+                    port=8888,  # this should not be changed
+                    mode="edge",
+                )
+        else:
+            raise EnvironmentError("Eel failed to start.")
 
 
-print("Eel ws running on ws://localhost:8888")
-eel.start("", size=(800, 600), port=8888, mode="chrome")
+if __name__ == "__main__":
+    main(parse_args())

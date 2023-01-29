@@ -11,7 +11,7 @@ declare global {
 	interface Window {
 		// eel is injected at runtime by the eel package
 		// eslint-disable-next-line @typescript-eslint/no-explicit-any
-		eel: any;
+		eel: any | undefined;
 	}
 }
 

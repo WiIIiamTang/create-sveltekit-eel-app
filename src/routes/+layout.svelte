@@ -6,6 +6,6 @@
 	<title>SvelteKitEel</title>
 </svelte:head>
 
-<div class="min-h-screen w-screen bg-slate-200">
+<div class="min-h-screen w-screen bg-gradient-to-b from-sky-200 via-sky-400 to-sky-600">
 	<slot />
 </div>
