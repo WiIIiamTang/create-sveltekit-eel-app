@@ -1,7 +1,7 @@
 {
 	"name": "sveltekiteel",
 	"version": "0.0.1",
-	"private": true,
+	"bin": "./bin/cli.js",
 	"scripts": {
 		"dev": "vite dev",
 		"build": "vite build",
