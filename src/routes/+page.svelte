@@ -29,7 +29,7 @@
 <div class="w-full h-full flex flex-col flex-wrap justify-center items-center py-2 px-2">
 	<div class="mb-4 text-center">
 		<h1 class="text-7xl font-light leading-relaxed">SvelteKitEel</h1>
-		<h2 class="text-xl text-zinc-600">Build GUI applications with SvelteKit and Python-Eel</h2>
+		<h2 class="text-xl text-zinc-800">Build GUI applications with SvelteKit and Python-Eel</h2>
 	</div>
 	<div class="flex flex-col gap-2 justify-center items-center py-4 w-1/2">
 		{#if message}

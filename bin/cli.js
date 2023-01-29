@@ -36,5 +36,7 @@ console.log('Done!');
 console.log(`
     To get started:
         cd ${repoName}
+        Optionallly, create your virtual environment
+        pip3 install -r requirements.txt
         npm run start:eel
 `);
