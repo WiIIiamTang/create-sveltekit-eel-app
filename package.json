@@ -1,6 +1,6 @@
 {
 	"name": "create-sveltekit-eel-app",
-	"version": "0.1.4",
+	"version": "0.1.5",
 	"bin": "./bin/cli.js",
 	"scripts": {
 		"dev": "vite dev",
@@ -13,6 +13,7 @@
 		"lint": "prettier --plugin-search-dir . --check . && eslint .",
 		"format": "prettier --plugin-search-dir . --write .",
 		"start:eel": "npm run build && python eelApp.py --console",
+		"start:eel-dev": "python eelApp.py --console --dev",
 		"build:eel-generate-spec": "npm run build && python -m eel eelApp.py build -y",
 		"build:eel": "npm run build && pyinstaller eelApp.spec -y"
 	},
