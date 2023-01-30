@@ -14,6 +14,10 @@
 
 </div>
 
+```
+npx create-sveltekit-eel-app@latest my-gui-app
+```
+
 <div align="center">
 
 ![exampleskeelapp](https://user-images.githubusercontent.com/48343678/215373055-6cb73a55-9d1f-4b56-89c3-0f4e8211e781.png)
@@ -179,8 +183,8 @@ This returns the filename at some point. In your SvelteKit application, call the
 
 ```svelte
 eel?.choose_file()((file: string) => {
-    // handle the selected file
-	message = `File selected: ${file}`;
+  // handle the selected file
+  message = `File selected: ${file}`;
 });
 ```
 

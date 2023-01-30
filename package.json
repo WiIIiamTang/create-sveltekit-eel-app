@@ -1,7 +1,14 @@
 {
 	"name": "create-sveltekit-eel-app",
-	"version": "0.1.5",
+	"version": "0.1.6",
 	"bin": "./bin/cli.js",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/WiIIiamTang/create-sveltekit-eel-app"
+	},
+	"homepage": "https://github.com/WiIIiamTang/create-sveltekit-eel-app",
+	"author": "William Tang",
+	"license": "MIT",
 	"scripts": {
 		"dev": "vite dev",
 		"build": "vite build",
@@ -39,5 +46,11 @@
 		"vite": "^4.0.0",
 		"vitest": "^0.25.3"
 	},
-	"type": "module"
+	"type": "module",
+	"keywords": [
+		"svelte",
+		"sveltekit",
+		"python-eel",
+		"gui"
+	]
 }
