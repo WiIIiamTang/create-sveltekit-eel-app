@@ -17,6 +17,7 @@
 
 	const handleDataClick = () => {
 		isLoading = true;
+		data = [];
 		eel?.get_data()((products: Array<Product>) => {
 			data = products;
 			isLoading = false;
