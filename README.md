@@ -63,6 +63,24 @@ Start the app with
 npm run start:eel
 ```
 
+## Development
+
+You can always preview the full app and test Eel-SvelteKit connections with
+
+```
+npm run start:eel
+```
+
+Develop the SvelteKit GUI with
+
+```
+npm run dev
+```
+
+And restart `npm run start:eel` as needed.
+
+Currently, `npm run start:eel-dev` will try to serve the eel app using the `src` folder but exposed functions will not work - so it's better to go with the above workflow.
+
 ### List of commands
 
 `npm run`
