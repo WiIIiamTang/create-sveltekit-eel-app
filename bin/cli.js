@@ -14,7 +14,7 @@ const runCommand = (command) => {
 
 const repoName = process.argv[2];
 const gitCheckoutCommand = `git clone --depth 1 https://github.com/WiIIiamTang/create-sveltekit-eel-app ${repoName}`;
-const installDepsCommand = `cd ${repoName} && npm install && git remote rm origin`;
+const installDepsCommand = `cd ${repoName} && npm install && git remote rm origin && git rm -r .github`;
 
 console.log(`Creating a new SvelteKitEel app in ${repoName}...`);
 const checkedOut = runCommand(gitCheckoutCommand);
