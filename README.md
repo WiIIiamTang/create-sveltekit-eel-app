@@ -124,7 +124,7 @@ In subsequent builds, you can run
 npm run build:eel
 ```
 
-Which will generate a production build according to the provided `.spec` file. For example, you may want to turn on the console window, or change the icon, or make the entire project a single file.
+Which will generate a production build according to the provided `.spec` file. For example, you may want to turn on the console window, or change the icon, or make the entire project a single file. Log output is not currently available in the console for production builds to ensure compatibility with the `--noconsole` setting, see [here](https://github.com/python-eel/Eel/issues/654).
 
 You can always manually run pyinstaller with
 
