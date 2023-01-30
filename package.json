@@ -1,6 +1,6 @@
 {
 	"name": "create-sveltekit-eel-app",
-	"version": "0.2.0",
+	"version": "0.2.1",
 	"bin": "./bin/cli.js",
 	"repository": {
 		"type": "git",
@@ -20,6 +20,7 @@
 		"lint": "prettier --plugin-search-dir . --check . && eslint .",
 		"format": "prettier --plugin-search-dir . --write .",
 		"start:eel": "npm run build && python eelApp.py --console",
+		"start:eel-nb": "python eelApp.py --console",
 		"start:eel-dev": "python eelApp.py --console --dev",
 		"build:eel-generate-spec": "npm run build && python -m eel eelApp.py build -y",
 		"build:eel": "npm run build && pyinstaller eelApp.spec -y"

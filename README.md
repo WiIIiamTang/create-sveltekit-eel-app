@@ -95,6 +95,7 @@ Currently, `npm run start:eel-dev` will try to serve the eel app using the `src`
 - `lint`: Run linting.
 - `format`: Format files with Prettier.
 - `start:eel`: Starts the Eel app. The SvelteKit app is served through the `build` folder.
+- `start:eel-nb`: Starts the Eel app with no build step beforehand.
 - `start:eel-dev`: Starts the Eel app in dev mode. The SvelteKit app is served through your `src` folder. SvelteKit also needs to run for this to work. **SEE THE NOTE ABOUT DEV MODE BELOW**
 - `build:eel-generate-spec`: This should be used the first time you create a production build of your Eel app. Generates a `.spec` file along with the build.
 - `build:eel`: Create a production build of your Eel app according to the generated `.spec` file.
