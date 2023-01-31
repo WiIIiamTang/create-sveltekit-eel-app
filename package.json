@@ -1,6 +1,6 @@
 {
   "name": "create-sveltekit-eel-app",
-  "version": "0.2.4",
+  "version": "0.3.0",
   "main": "./bin/cli.js",
   "bin": "./bin/cli.js",
   "repository": {

@@ -37,4 +37,6 @@ inquirer.prompt(QUESTIONS).then((answers) => {
   fs.mkdirSync(`${CURR_DIR}/${projectName}`);
 
   createDirectoryContents(templatePath, projectName);
+
+  console.log("\nYour project was created successfully! Get started with:\npip3 install -r requirements.txt\nnpm i\nnpm run start:eel");
 });
