@@ -1,3 +1,7 @@
+"""
+Any callable in this file will be automatically exposed to eel at runtime.
+Write everything you need here.
+"""
 import tkinter
 from tkinter import filedialog as fd
 import logging

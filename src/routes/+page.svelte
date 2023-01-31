@@ -11,6 +11,7 @@
 		count++;
 	}
 	if (eel) {
+		// window.eel?.expose will not work due to regex
 		window.eel.expose(hello_from_sk, 'hello_from_sk');
 	}
 	////////////////////////////////////////
