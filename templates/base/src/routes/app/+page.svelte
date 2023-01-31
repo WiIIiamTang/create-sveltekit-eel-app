@@ -35,10 +35,17 @@
 				<div>
 					{product.title}
 				</div>
-				<img src={product.thumbnail} alt={product.title} class="h-10 w-10" />
+				<img src={product.thumbnail} alt={product.title} class="image" />
 			</div>
 		{/each}
 	</div>
 	<br />
 	<a href="/">Back to home</a>
 </div>
+
+<style>
+	.image {
+		height: 2.5rem;
+		width: 2.5rem;
+	}
+</style>
