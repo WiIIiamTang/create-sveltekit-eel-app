@@ -27,14 +27,14 @@
 	};
 </script>
 
-<div class="w-full h-full flex flex-col flex-wrap justify-center items-center py-2 px-2">
-	<div class="mb-4 text-center">
-		<h1 class="text-7xl font-light leading-relaxed">SvelteKitEel</h1>
-		<h2 class="text-xl text-zinc-800">Build GUI applications with SvelteKit and Python-Eel</h2>
+<div>
+	<div>
+		<h1>SvelteKitEel</h1>
+		<h2>Build GUI applications with SvelteKit and Python-Eel</h2>
 	</div>
-	<div class="flex flex-col gap-2 justify-center items-center py-4 w-1/2">
+	<div>
 		{#if message}
-			<p class="text-2xl text-black text-center">{message}</p>
+			<p>{message}</p>
 		{/if}
 
 		<button
@@ -45,13 +45,8 @@
 			Call Eel function
 		</button>
 
-		<button
-			on:click={handleClickButtonFile}
-			type="button"
-			class="px-2 py-4 bg-slate-800 rounded-lg text-white hover:bg-slate-700 w-full"
-		>
-			Select a file
-		</button>
+		<button on:click={handleClickButtonFile} type="button"> Select a file </button>
 	</div>
-	<a href="/app" class="underline">Link to another route</a>
+	<br />
+	<a href="/app">Link to another route</a>
 </div>
