@@ -15,6 +15,7 @@ const createDirectoryContents = (templatePath, newProjectPath) => {
 
       // Rename
       if (file === ".npmignore") file = ".gitignore";
+      if (file === ".gitignore.template") file = ".gitignore";
 
       const writePath = `${CURR_DIR}/${newProjectPath}/${file}`;
       fs.writeFileSync(writePath, contents, "utf8");
