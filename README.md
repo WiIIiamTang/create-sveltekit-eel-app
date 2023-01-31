@@ -15,7 +15,7 @@
 </div>
 
 ```
-npx create-sveltekit-eel-app@latest my-gui-app
+npm create sveltekit-eel-app@latest
 ```
 
 <div align="center">
@@ -47,13 +47,13 @@ This template also comes with Tailwind CSS preconfigured.
 Get started with:
 
 ```
-npx create-sveltekit-eel-app@latest my-gui-app
+npm create sveltekit-eel-app@latest
 ```
 
 After it's done setting up, you can optionally create a virtual environment for your Python dependencies. Then,
 
 ```
-cd my-gui-app
+cd your-app-name
 pip3 install -r requirements.txt
 ```
 
