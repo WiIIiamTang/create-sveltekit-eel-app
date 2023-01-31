@@ -3,11 +3,31 @@ name: tagged-release
 on:
   push:
     tags:
-      - '**'
+      - "**"
 
 jobs:
-  build:
+  build-tailwind:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./templates/base+tailwind
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 18
+      - run: npm i
+      - name: Install playwright browsers
+        run: npx playwright install --with-deps
+      - run: npm run build --if-present
+      - run: npm run test:unit
+      - run: npm run test
+    
+  build-base:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./templates/base
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
@@ -21,7 +41,7 @@ jobs:
       - run: npm run test
 
   release:
-    needs: build
+    needs: ['build-base', 'build-tailwind']
     runs-on: ubuntu-latest
     if: startsWith(github.ref, 'refs/tags/')
     steps:

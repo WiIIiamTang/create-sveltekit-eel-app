@@ -1,42 +1,40 @@
 #!/usr/bin/env node
 
-import { execSync } from 'child_process';
+import inquirer from "inquirer";
+import * as fs from "fs";
+import { dirname } from "path";
+import { fileURLToPath } from "url";
+import createDirectoryContents from "./createDirectoryContents.js";
+const CURR_DIR = process.cwd();
+const __dirname = dirname(fileURLToPath(import.meta.url));
 
-const runCommand = (command) => {
-	try {
-		execSync(`${command}`, { stdio: 'inherit' });
-	} catch (error) {
-		console.error(error);
-		return false;
-	}
-	return true;
-};
+const CHOICES = fs.readdirSync(`${__dirname}/../templates`);
 
-const repoName = process.argv[2];
-const gitCheckoutCommand = `git clone --depth 1 https://github.com/WiIIiamTang/create-sveltekit-eel-app ${repoName}`;
-const installDepsCommand = `cd ${repoName} && npm install && git remote rm origin && git rm -r .github bin && git commit --amend -m "Initialized sveltekit-eel-app"`;
+const QUESTIONS = [
+  {
+    name: "project-choice",
+    type: "list",
+    message: "What project template would you like to generate?",
+    choices: CHOICES,
+  },
+  {
+    name: "project-name",
+    type: "input",
+    message: "Project name:",
+    validate: function (input) {
+      if (/^([A-Za-z\-\\_\d])+$/.test(input)) return true;
+      else
+        return "Project name may only include letters, numbers, underscores and hashes.";
+    },
+  },
+];
 
-console.log(`Creating a new SvelteKitEel app in ${repoName}...`);
-const checkedOut = runCommand(gitCheckoutCommand);
+inquirer.prompt(QUESTIONS).then((answers) => {
+  const projectChoice = answers["project-choice"];
+  const projectName = answers["project-name"];
+  const templatePath = `${__dirname}/../templates/${projectChoice}`;
 
-if (!checkedOut) {
-	console.error('Failed to clone the repo');
-	process.exit(1);
-}
+  fs.mkdirSync(`${CURR_DIR}/${projectName}`);
 
-console.log('Installing dependencies...');
-const installed = runCommand(installDepsCommand);
-
-if (!installed) {
-	console.error('Failed to install dependencies');
-	process.exit(1);
-}
-
-console.log('Done!');
-console.log(`
-    To get started:
-        cd ${repoName}
-        Optionally, create your virtual environment
-        pip3 install -r requirements.txt
-        npm run start:eel
-`);
+  createDirectoryContents(templatePath, projectName);
+});
