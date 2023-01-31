@@ -37,7 +37,6 @@
 			<p class="text-2xl text-black text-center">{message}</p>
 		{/if}
 
-		<div class="text-red-500 text-sm">(These won't work in dev mode)</div>
 		<button
 			on:click={handleClickButtonMessage}
 			type="button"
