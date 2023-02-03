@@ -11,6 +11,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--height", type=int, default=600)
     parser.add_argument("--dev", action="store_true", default=False)
     parser.add_argument("--console", action="store_true", default=False)
+    parser.add_argument("--mode", type=str, default="chrome")
     return parser.parse_args()
 
 
@@ -42,7 +43,7 @@ def main(args: argparse.Namespace):
             "" if not args.dev else {"port": 5173},
             size=(args.width, args.height),
             port=8888,  # this should not be changed
-            mode="chrome",
+            mode=None if args.mode == "None" else args.mode,
         )
     except EnvironmentError:
         if sys.platform in ["win32", "win64"]:
@@ -51,7 +52,9 @@ def main(args: argparse.Namespace):
             except ValueError:
                 raise EnvironmentError("Eel failed to start.")
             if platform_release >= 10:
-                logging.error("Eel failed to start with Chrome, defaulting to Edge")
+                logging.error(
+                    f"Eel failed to start with {args.mode}, defaulting to Edge"  # noqa
+                )
                 eel.start(
                     "" if not args.dev else {"port": 5173},
                     size=(args.width, args.height),

@@ -13,3 +13,7 @@ __pycache__
 dist
 build
 *.spec
+/test-results/
+/playwright-report/
+/playwright/.cache/
+tests-examples
