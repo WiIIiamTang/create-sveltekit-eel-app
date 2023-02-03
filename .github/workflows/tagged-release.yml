@@ -16,6 +16,12 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: 18
+      - name: install python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.10'
+      - name: install python requirements
+        run: pip install -r requirements.txt
       - run: npm i
       - name: Install playwright browsers
         run: npx playwright install --with-deps
@@ -33,6 +39,12 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: 18
+      - name: install python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.10'
+      - name: install python requirements
+        run: pip install -r requirements.txt
       - run: npm i
       - name: Install playwright browsers
         run: npx playwright install --with-deps
