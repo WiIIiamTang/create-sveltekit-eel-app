@@ -16,9 +16,7 @@ test('click on call eel function button', async ({ page }) => {
 	await page.waitForURL('http://localhost:8888/');
 	await page.waitForLoadState('networkidle');
 	await page.getByRole('button', { name: 'Call Eel function' }).waitFor();
-	await page
-		.getByRole('button', { name: 'Call Eel function' })
-		.click({ clickCount: 2, force: true, delay: 1000 });
+	await page.getByRole('button', { name: 'Call Eel function' }).click({ clickCount: 2 });
 	expect(await page.textContent('p')).toBe(
 		'Hello World, this function is being called from Python [1]'
 	);
